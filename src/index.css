@@ -1,0 +1,299 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Portfolio Design System - Bold & Vibrant
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Dark theme as primary */
+    --background: 220 13% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 13% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 13% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Beautiful blue primary to match avatar */
+    --primary: 210 85% 60%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 210 85% 75%;
+
+    --secondary: 220 13% 18%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 13% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 210 85% 60%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 20%;
+    --input: 220 13% 15%;
+    --ring: 210 85% 60%;
+
+    /* Design tokens */
+    --radius: 0.75rem;
+    --radius-xl: 1.5rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-dark: linear-gradient(135deg, hsl(var(--background)), hsl(var(--card)));
+    
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Animation durations */
+    --duration-fast: 200ms;
+    --duration-normal: 300ms;
+    --duration-slow: 500ms;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light theme variant (optional) */
+  .light {
+    --background: 0 0% 98%;
+    --foreground: 220 13% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 8%;
+    --border: 220 13% 85%;
+    --input: 220 13% 85%;
+    --secondary: 220 13% 92%;
+    --muted: 220 13% 95%;
+    --muted-foreground: 220 13% 35%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero gradient text */
+  .hero-gradient-text {
+    @apply bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent;
+  }
+  
+  /* Glow effects */
+  .glow-primary {
+    filter: drop-shadow(0 0 20px hsl(var(--primary) / 0.4));
+  }
+  
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-spring {
+    transition: var(--transition-spring);
+  }
+  
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-smooth hover:shadow-2xl hover:-translate-y-2 hover:scale-105;
+  }
+  
+  /* Section spacing */
+  .section-padding {
+    @apply py-24 px-6;
+  }
+  
+  /* Animation classes */
+  .animate-fade-in {
+    animation: fadeIn var(--duration-slow) ease-out forwards;
+    opacity: 0;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp var(--duration-slow) ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .animate-slide-left {
+    animation: slideLeft var(--duration-slow) ease-out forwards;
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  
+  .animate-slide-right {
+    animation: slideRight var(--duration-slow) ease-out forwards;
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn var(--duration-slow) ease-out forwards;
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn var(--duration-slow) cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  
+  .animate-rotate {
+    animation: rotate 10s linear infinite;
+  }
+  
+  .animate-wiggle {
+    animation: wiggle 1s ease-in-out infinite;
+  }
+  
+  /* Stagger animation delays */
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+  .animate-delay-600 { animation-delay: 600ms; }
+  .animate-delay-700 { animation-delay: 700ms; }
+  .animate-delay-800 { animation-delay: 800ms; }
+  }
+  
+  /* Keyframes */
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideRight {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes bounceIn {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+    }
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes wiggle {
+    0%, 100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+  
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-smooth hover:-translate-y-3 hover:shadow-xl;
+  }
+  
+  .hover-glow {
+    @apply transition-smooth hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)];
+  }
+  
+  .hover-scale {
+    @apply transition-smooth hover:scale-110;
+  }
+  
+  .hover-bounce {
+    @apply transition-all duration-300 hover:scale-110 hover:animate-bounce;
+  }
+  
+  .hover-wiggle:hover {
+    animation: wiggle 0.5s ease-in-out;
+  }
